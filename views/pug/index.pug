@@ -9,12 +9,12 @@ html
   body
     h1.border.center FCC Advanced Node and Express
     h2.center#pug-success-message
-    | Looks like this page is being rendered from Pug into HTML!
+    | Looks like this page is being rendered from Pug into HTML! <br>
     | #{title}
     p#pug-variable=message
-    
-    
-    
+
+
+
     if showLogin
       hr
       h2.center Login Form
@@ -27,7 +27,7 @@ html
           input(type='password', name='password')
         div
           input(type='submit', value='Log In')
-          
+
     if showRegistration
       hr
       h2.center Registration Form
