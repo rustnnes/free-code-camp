@@ -35,6 +35,10 @@ module.exports = function (app, myDataBase) {
     res.render(`${pugTemplate}/profile`, {username: req.user.username});
   });
 
+  app.route('/chat').get(ensureAuthenticated, (req, res) => {
+    res.render(`${pugTemplate}/chat`, { user: req.user });
+  });
+
   app.route('/logout').get((req, res) => {
       req.logout();
       res.redirect('/');
@@ -45,7 +49,8 @@ module.exports = function (app, myDataBase) {
   app.route('/auth/github/callback').get(
     passport.authenticate('github', { failureRedirect: '/' }),
     (req, res) => {
-      res.redirect('/profile');
+      req.session.user_id = req.user.id
+      res.redirect('/chat');
     }
   );
 
